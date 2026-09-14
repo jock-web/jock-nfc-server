@@ -190,7 +190,7 @@ export const ensureDefaultAdmin = async () => {
     if (!adminExists) {
       await User.create({
         username: 'admin',
-        password: 'admin123',
+        password: process.env.DEFAULT_ADMIN_PASSWORD || crypto.randomBytes(12).toString('hex'),
         email: 'admin@tapreview.com',
         fullName: 'Platform Admin',
         role: 'admin',
